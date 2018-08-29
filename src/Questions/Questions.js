@@ -1,6 +1,13 @@
 import React from "react";
 
-export default class Questions extends React.Component {
+import { connect } from "react-redux";
+import { retrieveQuestions } from "../redux/actions";
+
+class Questions extends React.Component {
+  componentDidMount() {
+    this.props.retrieveQuestions();
+  }
+
   render() {
     return (
       <div className="questions-card">
@@ -30,3 +37,18 @@ export default class Questions extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    retrieveQuestions: () => dispatch(retrieveQuestions())
+  };
+};
+
+const mapStateToProps = ({ questions }) => {
+  return { questions };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Questions);
