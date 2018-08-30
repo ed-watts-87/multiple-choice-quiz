@@ -1,22 +1,22 @@
 [
   {
     "questionText": "What is Minestrone?",
-    "answer": { "optionText": "Soup" }
+    "answer": "Soup"
   },
   {
     "questionText": "What colour is Gin?",
-    "options": { "optionText": "Colourless" }
+    "answer": "Colourless"
   },
   {
     "questionText": "What nuts are used to make Marzipan?",
-    "options": { "optionText": "Almonds" }
+    "answer": "Almonds"
   },
   {
     "questionText": "What do you add milk to make porridge?",
-    "options": { "optionText": "Oats" }
+    "answer": "Oats"
   },
   {
     "questionText": "What can I get at a scottish chippy?",
-    "options": { "optionText": "Deep Fried Mars Bar" }
+    "answer": "Deep Fried Mars Bar"
   }
 ]
