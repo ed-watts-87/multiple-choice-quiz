@@ -14,7 +14,6 @@ export const questionsReducer = (state = [], action) => {
 export const answerReducer = (state = [], action) => {
   switch (action.type) {
     case ANSWER_QUESTION:
-      console.log(action);
       const findAnswerIndex = el =>
         el.questionIndex == action.answer.questionIndex;
       const answerExists = state.findIndex(findAnswerIndex) > -1;
