@@ -18,7 +18,7 @@ class ReportCard extends React.Component {
     return (
       <>
         <div className="report-card-header">
-          <h3>Your Results!</h3>
+          <h3>Your Results...</h3>
           <h4>You got {this.getCorrectNumber()} right!</h4>
         </div>
 
