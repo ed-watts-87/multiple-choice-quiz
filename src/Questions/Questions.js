@@ -46,7 +46,7 @@ class Questions extends React.Component {
       <div className="questions-card">
         {this.state && this.props.results.length > 0 ? (
           <ReportCard />
-        ) : !questions.error ? (
+        ) : questions.length > 0 ? (
           <>
             <Question
               questions={questions}
@@ -85,36 +85,34 @@ const Question = props => {
   const currentAnswer = answers.findIndex(findAnswerIndex);
   const activeQuestion = questions[activeIndex];
   return (
-    questions.length > 1 && (
-      <>
-        <div className="questions-card-header">
-          <h3>{activeQuestion.questionText}</h3>
-        </div>
-        <div className="questions-card-answers">
-          {activeQuestion.options.map((option, idx) => {
-            return (
-              <div
-                className="questions-card-answer-option"
-                key={`${activeIndex}-${idx}`}
+    <>
+      <div className="questions-card-header">
+        <h3>{activeQuestion.questionText}</h3>
+      </div>
+      <div className="questions-card-answers">
+        {activeQuestion.options.map((option, idx) => {
+          return (
+            <div
+              className="questions-card-answer-option"
+              key={`${activeIndex}-${idx}`}
+            >
+              <button
+                className="questions-card-button-answer"
+                onClick={() => handleChange(option.optionText)}
               >
-                <button
-                  className="questions-card-button-answer"
-                  onClick={() => handleChange(option.optionText)}
-                >
-                  {option.optionText}
-                </button>
-              </div>
-            );
-          })}
-        </div>
+                {option.optionText}
+              </button>
+            </div>
+          );
+        })}
+      </div>
 
-        <div className="questions-card-selected-answer">
-          {currentAnswer > -1
-            ? `Your current selected answer: ${answers[currentAnswer].answer}`
-            : `Select an answer`}
-        </div>
-      </>
-    )
+      <div className="questions-card-selected-answer">
+        {currentAnswer > -1
+          ? `Your current selected answer: ${answers[currentAnswer].answer}`
+          : `Select an answer`}
+      </div>
+    </>
   );
 };
 
