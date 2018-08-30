@@ -115,3 +115,7 @@ label {
 h4 {
   margin-bottom: 0px;
 }
+
+.error {
+  color: red;
+}
