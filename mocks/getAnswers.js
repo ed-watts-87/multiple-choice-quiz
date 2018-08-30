@@ -19,6 +19,7 @@ const getAnswers = givenAnswers =>
       return {
         question: indexOfAnswer,
         questionText: answers[indexOfAnswer].questionText,
+        answerGiven: givenAnswer.answer,
         result:
           givenAnswer.answer === answers[indexOfAnswer].answer
             ? "correct"
