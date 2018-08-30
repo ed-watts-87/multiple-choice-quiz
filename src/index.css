@@ -55,7 +55,7 @@ label {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 400px;
+  height: 500px;
   width: 500px;
   padding: 0px 10px;
   background: rgb(255, 255, 255);
@@ -63,7 +63,6 @@ label {
 }
 
 .questions-card-answers {
-  flex: 0.5;
   width: auto;
   margin: auto;
 }
@@ -83,7 +82,8 @@ label {
   text-align: center;
 }
 
-.questions-card-ctas {
+.questions-card-ctas,
+.report-card-ctas {
   display: flex;
   justify-content: space-around;
   padding-bottom: 30px;
@@ -91,4 +91,20 @@ label {
 
 .questions-card-selected-answer {
   text-align: center;
+}
+
+.report-card-results {
+  flex: 1;
+  width: 100%;
+  font-size: 1em;
+  padding: 10px;
+}
+
+.report-card-header {
+  text-align: center;
+}
+
+.report-card-header h3,
+h4 {
+  margin-bottom: 0px;
 }

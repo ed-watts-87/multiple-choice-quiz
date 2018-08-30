@@ -1,14 +1,17 @@
 import React from "react";
-
+import ReportCard from "../ReportCard/ReportCard";
 import { connect } from "react-redux";
 import {
   retrieveQuestions,
   answerQuestion,
   getResults
 } from "../redux/actions";
-import getAnswers from "../../mocks/getAnswers";
 
 class Questions extends React.Component {
+  state = {
+    activeIndex: 0
+  };
+
   incrementIndex = () => {
     this.setState({
       activeIndex: this.state.activeIndex + 1
@@ -33,11 +36,7 @@ class Questions extends React.Component {
   };
 
   componentDidMount() {
-    this.props.retrieveQuestions().then(() =>
-      this.setState({
-        activeIndex: 0
-      })
-    );
+    this.props.retrieveQuestions();
   }
 
   render() {
@@ -45,7 +44,9 @@ class Questions extends React.Component {
     const answers = this.props.answers;
     return (
       <div className="questions-card">
-        {this.state && (
+        {this.state && this.props.results.length > 0 ? (
+          <ReportCard />
+        ) : (
           <>
             <Question
               questions={questions}
@@ -77,33 +78,36 @@ const Question = props => {
   const currentAnswer = answers.findIndex(findAnswerIndex);
   const activeQuestion = questions[activeIndex];
   return (
-    <>
-      <div className="questions-card-header">
-        <h3>{activeQuestion.questionText}</h3>
-      </div>
-      <div className="questions-card-answers">
-        {activeQuestion.options.map((option, idx) => {
-          return (
-            <div
-              className="questions-card-answer-option"
-              key={`${activeIndex}-${idx}`}
-            >
-              <button
-                className="questions-card-button-answer"
-                onClick={() => handleChange(option.optionText)}
-              >
-                {option.optionText}
-              </button>
-            </div>
-          );
-        })}
-      </div>
-      {currentAnswer > -1 && (
-        <div className="questions-card-selected-answer">
-          Your current selected option: {answers[currentAnswer].answer}
+    questions.length > 1 && (
+      <>
+        <div className="questions-card-header">
+          <h3>{activeQuestion.questionText}</h3>
         </div>
-      )}
-    </>
+        <div className="questions-card-answers">
+          {activeQuestion.options.map((option, idx) => {
+            return (
+              <div
+                className="questions-card-answer-option"
+                key={`${activeIndex}-${idx}`}
+              >
+                <button
+                  className="questions-card-button-answer"
+                  onClick={() => handleChange(option.optionText)}
+                >
+                  {option.optionText}
+                </button>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="questions-card-selected-answer">
+          {currentAnswer > -1
+            ? `Your current selected answer: ${answers[currentAnswer].answer}`
+            : `Select an answer`}
+        </div>
+      </>
+    )
   );
 };
 
