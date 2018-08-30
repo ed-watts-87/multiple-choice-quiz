@@ -19,6 +19,10 @@ Should you wish to build for production, just run `npm run build`.
 
 To run tests, just run `npm test`
 
+## Induce errors
+
+If you wish to test the mocked api error and the SPAs error handling please uncomment the 'reject' lines from `mocks/requestQuestions.js` and `mocks/getAnswers.js`
+
 ## Todo/Improvements
 
 - Use react-router to better control ui flow while still maintaining SPA 🛣️

@@ -14,6 +14,7 @@ const sortAnswers = (a, b) => {
 
 const getAnswers = givenAnswers =>
   new Promise((resolve, reject) => {
+    // reject(new Error("Answer service not available please try again later"));
     const checkResults = givenAnswers.map(givenAnswer => {
       const indexOfAnswer = givenAnswer.questionIndex;
       return {
@@ -29,7 +30,6 @@ const getAnswers = givenAnswers =>
 
     const results = checkResults.sort(sortAnswers);
     resolve(results);
-    // reject(new Error("Answer service not available please try again later"));
   });
 
 export default getAnswers;
