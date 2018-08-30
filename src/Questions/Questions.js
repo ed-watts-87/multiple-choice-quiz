@@ -44,7 +44,7 @@ class Questions extends React.Component {
     const answers = this.props.answers;
     return (
       <div className="questions-card">
-        {this.state && this.props.results.length > 0 ? (
+        {this.props.results.length > 0 ? (
           <ReportCard />
         ) : questions.length > 0 ? (
           <>
@@ -67,7 +67,7 @@ class Questions extends React.Component {
             />
           </>
         ) : (
-          <div className="questions-card-header">
+          <div className="questions-card-header error">
             <div>
               <h3>{questions.error}</h3>
               <button onClick={() => location.reload()}>Reload</button>

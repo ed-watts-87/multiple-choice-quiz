@@ -38,7 +38,7 @@ class ReportCard extends React.Component {
         </div>
       </>
     ) : (
-      <div className="report-card-header">
+      <div className="report-card-header error">
         <div>
           <h3>{results[0].error}</h3>
           <button onClick={() => location.reload()}>Reload</button>
