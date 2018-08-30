@@ -30,11 +30,15 @@ export function answerQuestion(answer) {
 
 export function getResults(answers) {
   return function(dispatch) {
-    return getAnswers(answers).then(results => {
-      dispatch({
-        type: "GET_RESULTS",
-        payload: results
+    return getAnswers(answers)
+      .then(results => {
+        dispatch({
+          type: "GET_RESULTS",
+          payload: results
+        });
+      })
+      .catch(err => {
+        return { err: "service not available" };
       });
-    });
   };
 }
