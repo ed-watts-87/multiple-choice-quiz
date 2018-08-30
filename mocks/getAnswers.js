@@ -14,7 +14,7 @@ const sortAnswers = (a, b) => {
 
 const getAnswers = givenAnswers =>
   new Promise((resolve, reject) => {
-    const checkResults = givenAnswers.map((givenAnswer, idx) => {
+    const checkResults = givenAnswers.map(givenAnswer => {
       const indexOfAnswer = givenAnswer.questionIndex;
       return {
         question: indexOfAnswer,
