@@ -21,7 +21,6 @@ class ReportCard extends React.Component {
           <h3>Your Results...</h3>
           <h4>You got {this.getCorrectNumber()} right!</h4>
         </div>
-
         {this.props.results.map(result => {
           return (
             <div
