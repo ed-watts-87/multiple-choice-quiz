@@ -4,17 +4,17 @@ import { connect } from "react-redux";
 import { retrieveQuestions, answerQuestion } from "../redux/actions";
 
 class Questions extends React.Component {
-  incrementIndex() {
+  incrementIndex = () => {
     this.setState({
       activeIndex: this.state.activeIndex + 1
     });
-  }
+  };
 
-  decrementIndex() {
+  decrementIndex = () => {
     this.setState({
       activeIndex: this.state.activeIndex - 1
     });
-  }
+  };
 
   handleOptionChange = evt => {
     this.props.answerQuestion({
@@ -46,23 +46,14 @@ class Questions extends React.Component {
             <div className="questions-card-answer-status">
               {answers.length} out of {questions.length} questions answered
             </div>
-            <div className="questions-card-ctas">
-              <button
-                disabled={this.state.activeIndex == 0}
-                onClick={() => this.decrementIndex()}
-              >
-                Previous
-              </button>
-              <button
-                disabled={this.state.activeIndex == questions.length - 1}
-                onClick={() => this.incrementIndex()}
-              >
-                Next
-              </button>
-              <button disabled={answers.length != questions.length}>
-                Submit
-              </button>
-            </div>
+            <QuestionButtons
+              activeIndex={this.state.activeIndex}
+              questions={questions}
+              answers={answers}
+              increment={this.incrementIndex}
+              decrement={this.decrement}
+              submit={this.submit}
+            />
           </>
         )}
       </div>
@@ -100,6 +91,31 @@ const Question = props => {
         })}
       </div>
     </>
+  );
+};
+
+const QuestionButtons = props => {
+  const {
+    activeIndex,
+    questions,
+    answers,
+    increment,
+    decrement,
+    submit
+  } = props;
+  return (
+    <div className="questions-card-ctas">
+      <button disabled={activeIndex == 0} onClick={() => decrement()}>
+        Previous
+      </button>
+      <button
+        disabled={activeIndex == questions.length - 1}
+        onClick={() => increment()}
+      >
+        Next
+      </button>
+      <button disabled={answers.length != questions.length}>Submit</button>
+    </div>
   );
 };
 
