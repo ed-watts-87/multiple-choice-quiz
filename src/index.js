@@ -11,7 +11,12 @@ import "./index.css";
 
 class App extends React.Component {
   render() {
-    return <Questions />;
+    return (
+      <div>
+        <h1>Food Quiz!</h1>
+        <Questions />
+      </div>
+    );
   }
 }
 

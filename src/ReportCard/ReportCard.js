@@ -2,10 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 class ReportCard extends React.Component {
-  componentDidMount() {
-    console.log(this.props);
-  }
-
   getCorrectNumber = () => {
     let numberCorrect = 0;
     this.props.results.forEach(result => {
