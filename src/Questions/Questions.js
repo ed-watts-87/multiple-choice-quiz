@@ -1,7 +1,12 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { retrieveQuestions, answerQuestion } from "../redux/actions";
+import {
+  retrieveQuestions,
+  answerQuestion,
+  getResults
+} from "../redux/actions";
+import getAnswers from "../../mocks/getAnswers";
 
 class Questions extends React.Component {
   incrementIndex = () => {
@@ -16,10 +21,14 @@ class Questions extends React.Component {
     });
   };
 
-  handleOptionChange = evt => {
+  submit = () => {
+    this.props.getResults(this.props.answers);
+  };
+
+  handleOptionChange = option => {
     this.props.answerQuestion({
       questionIndex: this.state.activeIndex,
-      answer: evt.target.value
+      answer: option
     });
   };
 
@@ -40,6 +49,7 @@ class Questions extends React.Component {
           <>
             <Question
               questions={questions}
+              answers={answers}
               activeIndex={this.state.activeIndex}
               handleChange={this.handleOptionChange}
             />
@@ -62,7 +72,9 @@ class Questions extends React.Component {
 }
 
 const Question = props => {
-  const { questions, activeIndex, handleChange } = props;
+  const { questions, answers, activeIndex, handleChange } = props;
+  const findAnswerIndex = el => el.questionIndex == activeIndex;
+  const currentAnswer = answers.findIndex(findAnswerIndex);
   const activeQuestion = questions[activeIndex];
   return (
     <>
@@ -76,20 +88,21 @@ const Question = props => {
               className="questions-card-answer-option"
               key={`${activeIndex}-${idx}`}
             >
-              <input
-                onChange={handleChange}
-                type="radio"
-                id={`${activeIndex}-${idx}`}
-                name={`question${activeIndex}`}
-                value={option.optionText}
-              />
-              <label htmlFor={`${activeIndex}-${idx}`}>
+              <button
+                className="questions-card-button-answer"
+                onClick={() => handleChange(option.optionText)}
+              >
                 {option.optionText}
-              </label>
+              </button>
             </div>
           );
         })}
       </div>
+      {currentAnswer > -1 && (
+        <div className="questions-card-selected-answer">
+          Your current selected option: {answers[currentAnswer].answer}
+        </div>
+      )}
     </>
   );
 };
@@ -114,7 +127,12 @@ const QuestionButtons = props => {
       >
         Next
       </button>
-      <button disabled={answers.length != questions.length}>Submit</button>
+      <button
+        disabled={answers.length != questions.length}
+        onClick={() => submit()}
+      >
+        Submit
+      </button>
     </div>
   );
 };
@@ -122,12 +140,13 @@ const QuestionButtons = props => {
 const mapDispatchToProps = dispatch => {
   return {
     retrieveQuestions: () => dispatch(retrieveQuestions()),
-    answerQuestion: answer => dispatch(answerQuestion(answer))
+    answerQuestion: answer => dispatch(answerQuestion(answer)),
+    getResults: answers => dispatch(getResults(answers))
   };
 };
 
-const mapStateToProps = ({ questions, answers }) => {
-  return { questions, answers };
+const mapStateToProps = ({ questions, answers, results }) => {
+  return { questions, answers, results };
 };
 
 export default connect(

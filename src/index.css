@@ -10,6 +10,7 @@ body {
 
 h3 {
   font-size: 2em;
+  margin: 15px 32px 0px 32px;
 }
 
 button {
@@ -21,6 +22,12 @@ button {
   border-radius: 2px;
   background: rgb(17, 199, 250);
   cursor: pointer;
+}
+
+button.questions-card-button-answer {
+  height: 40px;
+  width: 300px;
+  font-size: 1.25em;
 }
 
 button:hover {
@@ -56,7 +63,7 @@ label {
 }
 
 .questions-card-answers {
-  flex: 1;
+  flex: 0.5;
   width: auto;
   margin: auto;
 }
@@ -80,4 +87,8 @@ label {
   display: flex;
   justify-content: space-around;
   padding-bottom: 30px;
+}
+
+.questions-card-selected-answer {
+  text-align: center;
 }

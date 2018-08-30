@@ -1,4 +1,4 @@
-import { RETRIEVE_QUESTIONS, ANSWER_QUESTION } from "./actions";
+import { RETRIEVE_QUESTIONS, ANSWER_QUESTION, GET_RESULTS } from "./actions";
 import { combineReducers } from "redux";
 
 export const questionsReducer = (state = [], action) => {
@@ -27,7 +27,17 @@ export const answerReducer = (state = [], action) => {
       } else {
         answersArray.push(action.answer);
       }
+
       return answersArray;
+    default:
+      return state;
+  }
+};
+
+export const resultsReducer = (state = [], action) => {
+  switch (action.type) {
+    case GET_RESULTS:
+      return action.payload;
     default:
       return state;
   }
@@ -35,7 +45,8 @@ export const answerReducer = (state = [], action) => {
 
 const reducer = combineReducers({
   questions: questionsReducer,
-  answers: answerReducer
+  answers: answerReducer,
+  results: resultsReducer
 });
 
 export default reducer;

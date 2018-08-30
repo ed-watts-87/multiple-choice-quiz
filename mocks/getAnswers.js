@@ -18,12 +18,12 @@ const getAnswers = givenAnswers =>
       if (givenAnswer.answer === answers[indexOfAnswer].answer) {
         return {
           question: indexOfAnswer,
-          result: correct
+          result: "correct"
         };
       } else {
         return {
           question: indexOfAnswer,
-          result: incorrect
+          result: "incorrect"
         };
       }
     });
