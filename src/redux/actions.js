@@ -11,12 +11,15 @@ export function retrieveQuestions() {
     return requestQuestions()
       .then(data => {
         dispatch({
-          type: RETRIEVE_QUESTIONS,
+          type: "RETRIEVE_QUESTIONS",
           payload: data
         });
       })
       .catch(err => {
-        return { err: "service not available" };
+        dispatch({
+          type: "RETRIEVE_QUESTIONS",
+          payload: { error: err.message }
+        });
       });
   };
 }
@@ -38,7 +41,10 @@ export function getResults(answers) {
         });
       })
       .catch(err => {
-        return { err: "service not available" };
+        dispatch({
+          type: "GET_RESULTS",
+          payload: [{ error: err.message }]
+        });
       });
   };
 }

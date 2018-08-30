@@ -46,7 +46,7 @@ class Questions extends React.Component {
       <div className="questions-card">
         {this.state && this.props.results.length > 0 ? (
           <ReportCard />
-        ) : (
+        ) : !questions.error ? (
           <>
             <Question
               questions={questions}
@@ -66,6 +66,13 @@ class Questions extends React.Component {
               submit={this.submit}
             />
           </>
+        ) : (
+          <div className="questions-card-header">
+            <div>
+              <h3>{questions.error}</h3>
+              <button onClick={() => location.reload()}>Reload</button>
+            </div>
+          </div>
         )}
       </div>
     );

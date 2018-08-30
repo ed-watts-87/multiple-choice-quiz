@@ -11,13 +11,14 @@ class ReportCard extends React.Component {
   };
 
   render() {
-    return (
+    const results = this.props.results;
+    return !results[0].error ? (
       <>
         <div className="report-card-header">
           <h3>Your Results...</h3>
           <h4>You got {this.getCorrectNumber()} right!</h4>
         </div>
-        {this.props.results.map(result => {
+        {results.map(result => {
           return (
             <div
               key={`results-${result.question}`}
@@ -36,6 +37,13 @@ class ReportCard extends React.Component {
           <button onClick={() => location.reload()}>Play Again?</button>
         </div>
       </>
+    ) : (
+      <div className="report-card-header">
+        <div>
+          <h3>{results[0].error}</h3>
+          <button onClick={() => location.reload()}>Reload</button>
+        </div>
+      </div>
     );
   }
 }
