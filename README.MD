@@ -18,3 +18,10 @@ Should you wish to build for production, just run `npm run build`.
 ## Testing
 
 To run tests, just run `npm test`
+
+## Todo/Improvements
+
+- Use react-router to better control ui flow while still maintaining SPA 🛣️
+- Implement backend API 📈
+- Better error handling and component failsafes ❌
+- Spend more time on styling 💅
