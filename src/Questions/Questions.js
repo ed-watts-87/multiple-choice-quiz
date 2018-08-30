@@ -51,7 +51,7 @@ class Questions extends React.Component {
               questions={questions}
               answers={answers}
               increment={this.incrementIndex}
-              decrement={this.decrement}
+              decrement={this.decrementIndex}
               submit={this.submit}
             />
           </>
