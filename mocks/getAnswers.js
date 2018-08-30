@@ -14,22 +14,22 @@ const sortAnswers = (a, b) => {
 
 const getAnswers = givenAnswers =>
   new Promise((resolve, reject) => {
-    // const checkResults = givenAnswers.map(givenAnswer => {
-    //   const indexOfAnswer = givenAnswer.questionIndex;
-    //   return {
-    //     question: indexOfAnswer,
-    //     questionText: answers[indexOfAnswer].questionText,
-    //     answerGiven: givenAnswer.answer,
-    //     result:
-    //       givenAnswer.answer === answers[indexOfAnswer].answer
-    //         ? "correct"
-    //         : "incorrect"
-    //   };
-    // });
+    const checkResults = givenAnswers.map(givenAnswer => {
+      const indexOfAnswer = givenAnswer.questionIndex;
+      return {
+        question: indexOfAnswer,
+        questionText: answers[indexOfAnswer].questionText,
+        answerGiven: givenAnswer.answer,
+        result:
+          givenAnswer.answer === answers[indexOfAnswer].answer
+            ? "correct"
+            : "incorrect"
+      };
+    });
 
-    // const results = checkResults.sort(sortAnswers);
-    // resolve(results);
-    reject(new Error("Answer service not available please try again later"));
+    const results = checkResults.sort(sortAnswers);
+    resolve(results);
+    // reject(new Error("Answer service not available please try again later"));
   });
 
 export default getAnswers;
