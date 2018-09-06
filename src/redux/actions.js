@@ -5,6 +5,13 @@ import getAnswers from "../../mocks/getAnswers";
 export const RETRIEVE_QUESTIONS = "RETRIEVE_QUESTIONS";
 export const ANSWER_QUESTION = "ANSWER_QUESTION";
 export const GET_RESULTS = "GET_RESULTS";
+export const RESET_APP = "RESET_APP";
+
+export function resetApplication() {
+  return {
+    type: "RESET_APP"
+  };
+}
 
 export function retrieveQuestions() {
   return function(dispatch) {

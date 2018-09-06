@@ -1,6 +1,8 @@
 import React from "react";
-import ReportCard from "../ReportCard/ReportCard";
 import { connect } from "react-redux";
+import QuestionButtons from "../QuestionButtons/QuestionButtons";
+import QuestionCard from "../QuestionCard/QuestionCard";
+
 import {
   retrieveQuestions,
   answerQuestion,
@@ -44,11 +46,9 @@ class Questions extends React.Component {
     const answers = this.props.answers;
     return (
       <div className="questions-card">
-        {this.props.results.length > 0 ? (
-          <ReportCard />
-        ) : questions.length > 0 ? (
+        {questions.length > 0 ? (
           <>
-            <Question
+            <QuestionCard
               questions={questions}
               answers={answers}
               activeIndex={this.state.activeIndex}
@@ -63,7 +63,6 @@ class Questions extends React.Component {
               answers={answers}
               increment={this.incrementIndex}
               decrement={this.decrementIndex}
-              submit={this.submit}
             />
           </>
         ) : (
@@ -78,73 +77,6 @@ class Questions extends React.Component {
     );
   }
 }
-
-const Question = props => {
-  const { questions, answers, activeIndex, handleChange } = props;
-  const findAnswerIndex = el => el.questionIndex == activeIndex;
-  const currentAnswer = answers.findIndex(findAnswerIndex);
-  const activeQuestion = questions[activeIndex];
-  return (
-    <>
-      <div className="questions-card-header">
-        <h3>{activeQuestion.questionText}</h3>
-      </div>
-      <div className="questions-card-answers">
-        {activeQuestion.options.map((option, idx) => {
-          return (
-            <div
-              className="questions-card-answer-option"
-              key={`${activeIndex}-${idx}`}
-            >
-              <button
-                className="questions-card-button-answer"
-                onClick={() => handleChange(option.optionText)}
-              >
-                {option.optionText}
-              </button>
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="questions-card-selected-answer">
-        {currentAnswer > -1
-          ? `Your current selected answer: ${answers[currentAnswer].answer}`
-          : `Select an answer`}
-      </div>
-    </>
-  );
-};
-
-const QuestionButtons = props => {
-  const {
-    activeIndex,
-    questions,
-    answers,
-    increment,
-    decrement,
-    submit
-  } = props;
-  return (
-    <div className="questions-card-ctas">
-      <button disabled={activeIndex == 0} onClick={() => decrement()}>
-        Previous
-      </button>
-      <button
-        disabled={activeIndex == questions.length - 1}
-        onClick={() => increment()}
-      >
-        Next
-      </button>
-      <button
-        disabled={answers.length != questions.length}
-        onClick={() => submit()}
-      >
-        Submit
-      </button>
-    </div>
-  );
-};
 
 const mapDispatchToProps = dispatch => {
   return {

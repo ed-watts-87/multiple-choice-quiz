@@ -1,10 +1,18 @@
-import { RETRIEVE_QUESTIONS, ANSWER_QUESTION, GET_RESULTS } from "./actions";
+import {
+  RETRIEVE_QUESTIONS,
+  ANSWER_QUESTION,
+  GET_RESULTS,
+  RESET_APP
+} from "./actions";
 import { combineReducers } from "redux";
 
 export const questionsReducer = (state = [], action) => {
   switch (action.type) {
     case RETRIEVE_QUESTIONS: {
       return action.payload;
+    }
+    case RESET_APP: {
+      return [];
     }
     default:
       return state;
@@ -29,6 +37,9 @@ export const answerReducer = (state = [], action) => {
       }
 
       return answersArray;
+    case RESET_APP: {
+      return [];
+    }
     default:
       return state;
   }
@@ -38,6 +49,9 @@ export const resultsReducer = (state = [], action) => {
   switch (action.type) {
     case GET_RESULTS:
       return action.payload;
+    case RESET_APP: {
+      return [];
+    }
     default:
       return state;
   }
