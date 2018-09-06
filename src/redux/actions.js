@@ -6,6 +6,7 @@ export const RETRIEVE_QUESTIONS = "RETRIEVE_QUESTIONS";
 export const ANSWER_QUESTION = "ANSWER_QUESTION";
 export const GET_RESULTS = "GET_RESULTS";
 export const RESET_APP = "RESET_APP";
+export const ERROR = "ERROR";
 
 export function resetApplication() {
   return {
@@ -24,7 +25,7 @@ export function retrieveQuestions() {
       })
       .catch(err => {
         dispatch({
-          type: "RETRIEVE_QUESTIONS",
+          type: "ERROR",
           payload: { error: err.message }
         });
       });
@@ -49,8 +50,8 @@ export function getResults(answers) {
       })
       .catch(err => {
         dispatch({
-          type: "GET_RESULTS",
-          payload: [{ error: err.message }]
+          type: "ERROR",
+          payload: { error: err.message }
         });
       });
   };

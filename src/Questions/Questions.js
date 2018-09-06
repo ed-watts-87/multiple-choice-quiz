@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import QuestionButtons from "../QuestionButtons/QuestionButtons";
 import QuestionCard from "../QuestionCard/QuestionCard";
+import Error from "../Error/Error";
 
 import {
   retrieveQuestions,
@@ -46,7 +47,7 @@ class Questions extends React.Component {
     const answers = this.props.answers;
     return (
       <div className="questions-card">
-        {questions.length > 0 ? (
+        {questions.length > 0 && (
           <>
             <QuestionCard
               questions={questions}
@@ -65,14 +66,8 @@ class Questions extends React.Component {
               decrement={this.decrementIndex}
             />
           </>
-        ) : (
-          <div className="questions-card-header error">
-            <div>
-              <h3>{questions.error}</h3>
-              <button onClick={() => location.reload()}>Reload</button>
-            </div>
-          </div>
         )}
+        {this.props.error.error && <Error />}
       </div>
     );
   }
@@ -86,8 +81,8 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = ({ questions, answers, results }) => {
-  return { questions, answers, results };
+const mapStateToProps = ({ questions, answers, results, error }) => {
+  return { questions, answers, results, error };
 };
 
 export default connect(

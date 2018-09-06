@@ -2,7 +2,8 @@ import {
   RETRIEVE_QUESTIONS,
   ANSWER_QUESTION,
   GET_RESULTS,
-  RESET_APP
+  RESET_APP,
+  ERROR
 } from "./actions";
 import { combineReducers } from "redux";
 
@@ -57,10 +58,23 @@ export const resultsReducer = (state = [], action) => {
   }
 };
 
+export const errorReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ERROR:
+      return action.payload;
+    case RESET_APP: {
+      return {};
+    }
+    default:
+      return state;
+  }
+};
+
 const reducer = combineReducers({
   questions: questionsReducer,
   answers: answerReducer,
-  results: resultsReducer
+  results: resultsReducer,
+  error: errorReducer
 });
 
 export default reducer;
