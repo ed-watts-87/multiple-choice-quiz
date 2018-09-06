@@ -4,7 +4,12 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: rgb(33, 150, 243);
+  background: rgb(0, 92, 167);
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(0, 92, 167),
+    rgb(33, 150, 243)
+  );
   font-family: Helvetica, sans-serif;
 }
 
@@ -107,7 +112,8 @@ label {
   padding: 10px;
 }
 
-.report-card-header {
+.report-card-header,
+.error-card-header {
   text-align: center;
 }
 

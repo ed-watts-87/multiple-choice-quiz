@@ -11,7 +11,7 @@ class Error extends React.Component {
 
   render() {
     return (
-      <div className="report-card-header error">
+      <div className="error-card-header error">
         <div>
           <h3>{this.props.error.error}</h3>
           <button onClick={() => this.resetApp()}>Reload</button>
