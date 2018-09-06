@@ -14,39 +14,35 @@ const QuestionCard = props => {
             <QuestionSelection
               key={`${activeIndex}-${idx}`}
               option={option}
+              answers={answers}
+              activeIndex={activeIndex}
               handleChange={handleChange}
             />
           );
         })}
       </div>
-      <SelectedAnswer answers={answers} activeIndex={activeIndex} />
     </>
   );
 };
 
 const QuestionSelection = props => {
-  const { option, handleChange } = props;
+  const { option, answers, activeIndex, handleChange } = props;
+  const findAnswerIndex = el => el.questionIndex == activeIndex;
+  const currentAnswer = answers.findIndex(findAnswerIndex);
+  const isSelected =
+    currentAnswer != -1 && answers[currentAnswer].answer == option.optionText;
   return (
     <div className="questions-card-answer-option">
       <button
-        className="questions-card-button-answer"
+        className={`${
+          isSelected
+            ? "questions-card-button-answer selected"
+            : "questions-card-button-answer"
+        }`}
         onClick={() => handleChange(option.optionText)}
       >
         {option.optionText}
       </button>
-    </div>
-  );
-};
-
-const SelectedAnswer = props => {
-  const { answers, activeIndex } = props;
-  const findAnswerIndex = el => el.questionIndex == activeIndex;
-  const currentAnswer = answers.findIndex(findAnswerIndex);
-  return (
-    <div className="questions-card-selected-answer">
-      {currentAnswer > -1
-        ? `Your current selected answer: ${answers[currentAnswer].answer}`
-        : `Select an answer`}
     </div>
   );
 };
