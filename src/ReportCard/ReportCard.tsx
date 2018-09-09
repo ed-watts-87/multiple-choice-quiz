@@ -7,14 +7,14 @@ import { getResults, resetApplication } from "../redux/actions";
 
 import ReportAnswers from "../ReportAnswers/ReportAnswers";
 import Error from "../Error/Error";
-import { IResults, IQuestion, IAnswers, IError } from "../types";
+import { IResult, IQuestions, IAnswer, IError } from "../types";
 
 interface IReportCardProps {
   getResults: (answers: object) => void;
   resetApplication: () => void;
-  questions: IQuestion[];
-  answers: IAnswers[];
-  results: IResults[];
+  questions: IQuestions[];
+  answers: IAnswer[];
+  results: IResult[];
   error: IError;
   history: History;
 }

@@ -6,16 +6,16 @@ interface IOptions {
   optionText: string;
 }
 
-export interface IQuestion {
+export interface IQuestions {
   options: IOptions[];
 }
 
-export interface IAnswers {
+export interface IAnswer {
   answer: string;
   questionIndex: number;
 }
 
-export interface IResults {
+export interface IResult {
   answerGiven: string;
   question: number;
   questionText: string;

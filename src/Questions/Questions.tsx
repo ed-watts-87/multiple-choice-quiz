@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { IError, IQuestion, IAnswers } from "../types";
+import { IError, IQuestions, IAnswer } from "../types";
 import QuestionButtons from "../QuestionButtons/QuestionButtons";
 import QuestionCard from "../QuestionCard/QuestionCard";
 import Error from "../Error/Error";
@@ -9,9 +9,9 @@ import { retrieveQuestions, answerQuestion } from "../redux/actions";
 
 interface IQuestionProps {
   retrieveQuestions: () => void;
-  answerQuestion: ({ questionIndex: number, answer: string }) => void;
-  questions: IQuestion[];
-  answers: IAnswers[];
+  answerQuestion: (IAnswer) => void;
+  questions: IQuestions[];
+  answers: IAnswer[];
   error: IError;
 }
 
@@ -36,7 +36,7 @@ class QuestionsView extends React.Component<IQuestionProps, IQuestionState> {
     });
   };
 
-  handleOptionChange = option => {
+  handleOptionChange = (option: string) => {
     this.props.answerQuestion({
       questionIndex: this.state.activeIndex,
       answer: option
@@ -81,7 +81,7 @@ class QuestionsView extends React.Component<IQuestionProps, IQuestionState> {
 const mapDispatchToProps = dispatch => {
   return {
     retrieveQuestions: () => dispatch(retrieveQuestions()),
-    answerQuestion: answer => dispatch(answerQuestion(answer))
+    answerQuestion: (answer: IAnswer) => dispatch(answerQuestion(answer))
   };
 };
 
