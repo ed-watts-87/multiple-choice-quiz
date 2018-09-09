@@ -1,6 +1,22 @@
 import * as React from "react";
+import { IQuestion, IAnswer, IOptions, IHandleOptionChange } from "../types";
 
-const QuestionCard = props => {
+interface IQuestionCardProps {
+  questions: IQuestion[];
+  answers: IAnswer[];
+  activeIndex: number;
+  handleChange: IHandleOptionChange;
+}
+
+interface IQuestionSelectionProps {
+  key: string;
+  option: IOptions;
+  answers: IAnswer[];
+  activeIndex: number;
+  handleChange: IHandleOptionChange;
+}
+
+const QuestionCard = (props: IQuestionCardProps) => {
   const { questions, answers, activeIndex, handleChange } = props;
   const activeQuestion = questions[activeIndex];
   return (
@@ -25,9 +41,9 @@ const QuestionCard = props => {
   );
 };
 
-const QuestionSelection = props => {
+const QuestionSelection = (props: IQuestionSelectionProps) => {
   const { option, answers, activeIndex, handleChange } = props;
-  const findAnswerIndex = el => el.questionIndex == activeIndex;
+  const findAnswerIndex = (el: IAnswer) => el.questionIndex == activeIndex;
   const currentAnswer = answers.findIndex(findAnswerIndex);
   const isSelected =
     currentAnswer != -1 && answers[currentAnswer].answer == option.optionText;

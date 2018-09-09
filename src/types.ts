@@ -2,12 +2,13 @@ export interface IError {
   error: string;
 }
 
-interface IOptions {
+export interface IOptions {
   optionText: string;
 }
 
-export interface IQuestions {
+export interface IQuestion {
   options: IOptions[];
+  questionText: string;
 }
 
 export interface IAnswer {
@@ -20,4 +21,8 @@ export interface IResult {
   question: number;
   questionText: string;
   result: string;
+}
+
+export interface IHandleOptionChange {
+  (option: string);
 }
