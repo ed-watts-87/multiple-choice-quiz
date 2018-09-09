@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 const QuestionCard = props => {
   const { questions, answers, activeIndex, handleChange } = props;

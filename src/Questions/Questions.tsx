@@ -1,5 +1,6 @@
-import React from "react";
+import * as React from "react";
 import { connect } from "react-redux";
+import { IError, IQuestion, IAnswers } from "../types";
 import QuestionButtons from "../QuestionButtons/QuestionButtons";
 import QuestionCard from "../QuestionCard/QuestionCard";
 import Error from "../Error/Error";
@@ -10,7 +11,20 @@ import {
   getResults
 } from "../redux/actions";
 
-class Questions extends React.Component {
+interface IQuestionProps {
+  getResults: (answers: object) => void;
+  answerQuestion: ({ questionIndex: number, answer: string }) => void;
+  retrieveQuestions: () => void;
+  questions: IQuestion[];
+  answers: IAnswers[];
+  error: IError;
+}
+
+interface IQuestionState {
+  activeIndex: number;
+}
+
+class QuestionsView extends React.Component<IQuestionProps, IQuestionState> {
   state = {
     activeIndex: 0
   };
@@ -81,11 +95,12 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = ({ questions, answers, results, error }) => {
-  return { questions, answers, results, error };
+const mapStateToProps = ({ questions, answers, error }) => {
+  return { questions, answers, error };
 };
 
-export default connect(
+const Questions = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Questions);
+)(QuestionsView);
+export default Questions;
