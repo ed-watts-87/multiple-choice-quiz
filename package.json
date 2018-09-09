@@ -20,7 +20,10 @@
     "@babel/core": "^7.0.0",
     "@types/jest": "^23.3.2",
     "@types/react": "^16.4.13",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-router": "^4.0.30",
     "@types/redux": "^3.6.0",
+    "@types/redux-thunk": "^2.1.0",
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",
@@ -34,8 +37,6 @@
     "webpack-dev-server": "^3.1.6"
   },
   "dependencies": {
-    "@types/react-dom": "^16.0.7",
-    "@types/react-router": "^4.0.30",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-mock": "^6.0.1",
