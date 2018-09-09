@@ -1,4 +1,5 @@
 import * as React from "react";
+import { History } from "history";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
@@ -6,8 +7,19 @@ import { getResults, resetApplication } from "../redux/actions";
 
 import ReportAnswers from "../ReportAnswers/ReportAnswers";
 import Error from "../Error/Error";
+import { IResults, IQuestion, IAnswers, IError } from "../types";
 
-class ReportCard extends React.Component {
+interface IReportCardProps {
+  getResults: (answers: object) => void;
+  resetApplication: () => void;
+  questions: IQuestion[];
+  answers: IAnswers[];
+  results: IResults[];
+  error: IError;
+  history: History;
+}
+
+class ReportCard extends React.Component<IReportCardProps, void> {
   componentDidMount() {
     if (this.props.questions.length == 0) {
       return this.props.history.push("/");

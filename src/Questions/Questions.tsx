@@ -5,16 +5,11 @@ import QuestionButtons from "../QuestionButtons/QuestionButtons";
 import QuestionCard from "../QuestionCard/QuestionCard";
 import Error from "../Error/Error";
 
-import {
-  retrieveQuestions,
-  answerQuestion,
-  getResults
-} from "../redux/actions";
+import { retrieveQuestions, answerQuestion } from "../redux/actions";
 
 interface IQuestionProps {
-  getResults: (answers: object) => void;
-  answerQuestion: ({ questionIndex: number, answer: string }) => void;
   retrieveQuestions: () => void;
+  answerQuestion: ({ questionIndex: number, answer: string }) => void;
   questions: IQuestion[];
   answers: IAnswers[];
   error: IError;
@@ -39,10 +34,6 @@ class QuestionsView extends React.Component<IQuestionProps, IQuestionState> {
     this.setState({
       activeIndex: this.state.activeIndex - 1
     });
-  };
-
-  submit = () => {
-    this.props.getResults(this.props.answers);
   };
 
   handleOptionChange = option => {
@@ -90,8 +81,7 @@ class QuestionsView extends React.Component<IQuestionProps, IQuestionState> {
 const mapDispatchToProps = dispatch => {
   return {
     retrieveQuestions: () => dispatch(retrieveQuestions()),
-    answerQuestion: answer => dispatch(answerQuestion(answer)),
-    getResults: answers => dispatch(getResults(answers))
+    answerQuestion: answer => dispatch(answerQuestion(answer))
   };
 };
 
