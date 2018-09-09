@@ -17,6 +17,8 @@
   "author": "Ed Watts",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@types/jest": "^23.3.2",
     "@types/react": "^16.4.13",
     "@types/redux": "^3.6.0",
     "awesome-typescript-loader": "^5.2.1",
@@ -25,6 +27,7 @@
     "jest": "^23.5.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.0",
+    "ts-jest": "^23.1.4",
     "typescript": "^3.0.3",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
@@ -42,8 +45,20 @@
     "redux-thunk": "^2.3.0"
   },
   "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
     "transform": {
-      "^.+\\.js?$": "babel-jest"
-    }
+      "^.+\\.(t|j)sx?$": "ts-jest"
+    },
+    "testRegex": "(.*test)\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

@@ -15,9 +15,9 @@ interface IQuestionProps {
   error: IError;
 }
 
-interface IQuestionState {
-  activeIndex: number;
-}
+type IQuestionState = {
+  readonly activeIndex: number;
+};
 
 class Questions extends React.Component<IQuestionProps, IQuestionState> {
   state = {

@@ -6,8 +6,12 @@ import {
   ERROR
 } from "./actions";
 import { combineReducers } from "redux";
+import { IQuestion, IAnswer, IResult, IError } from "../types";
 
-export const questionsReducer = (state = [], action) => {
+export const questionsReducer = (
+  state: ReadonlyArray<IQuestion> = [],
+  action
+) => {
   switch (action.type) {
     case RETRIEVE_QUESTIONS: {
       return action.payload;
@@ -20,7 +24,7 @@ export const questionsReducer = (state = [], action) => {
   }
 };
 
-export const answerReducer = (state = [], action) => {
+export const answerReducer = (state: ReadonlyArray<IAnswer> = [], action) => {
   switch (action.type) {
     case ANSWER_QUESTION:
       const findAnswerIndex = el =>
@@ -46,7 +50,7 @@ export const answerReducer = (state = [], action) => {
   }
 };
 
-export const resultsReducer = (state = [], action) => {
+export const resultsReducer = (state: ReadonlyArray<IResult> = [], action) => {
   switch (action.type) {
     case GET_RESULTS:
       return action.payload;
@@ -58,7 +62,7 @@ export const resultsReducer = (state = [], action) => {
   }
 };
 
-export const errorReducer = (state = {}, action) => {
+export const errorReducer = (state: Readonly<IError> = {}, action) => {
   switch (action.type) {
     case ERROR:
       return action.payload;

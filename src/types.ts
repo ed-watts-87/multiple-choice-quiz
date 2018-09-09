@@ -1,5 +1,5 @@
 export interface IError {
-  error: string;
+  error?: string;
 }
 
 export interface IOptions {

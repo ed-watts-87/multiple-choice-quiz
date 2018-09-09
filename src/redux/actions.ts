@@ -1,5 +1,6 @@
 import requestQuestions from "../../mocks/requestQuestions";
 import getAnswers from "../../mocks/getAnswers";
+import { IQuestion, IAnswer } from "../types";
 
 //ACTIONS
 export const RETRIEVE_QUESTIONS = "RETRIEVE_QUESTIONS";
@@ -17,7 +18,7 @@ export function resetApplication() {
 export function retrieveQuestions() {
   return function(dispatch) {
     return requestQuestions()
-      .then(data => {
+      .then((data: IQuestion[]) => {
         dispatch({
           type: "RETRIEVE_QUESTIONS",
           payload: data
@@ -32,14 +33,14 @@ export function retrieveQuestions() {
   };
 }
 
-export function answerQuestion(answer) {
+export function answerQuestion(answer: IAnswer) {
   return {
     type: "ANSWER_QUESTION",
     answer
   };
 }
 
-export function getResults(answers) {
+export function getResults(answers: IAnswer[]) {
   return function(dispatch) {
     return getAnswers(answers)
       .then(results => {
