@@ -1,9 +1,17 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { History } from "history";
 import { resetApplication } from "../redux/actions";
+import { IError } from "../types";
 
-class Error extends React.Component {
+interface IErrorProps {
+  resetApplication: () => void;
+  error: IError;
+  history: History;
+}
+
+class Error extends React.Component<IErrorProps, void> {
   resetApp = () => {
     this.props.resetApplication();
     this.props.history.push("/");

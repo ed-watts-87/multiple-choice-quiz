@@ -1,7 +1,18 @@
 import * as React from "react";
 import { withRouter } from "react-router-dom";
+import { History } from "history";
+import { IQuestion, IAnswer } from "../types";
 
-const QuestionButtons = props => {
+interface IQuestionButtonsProps {
+  activeIndex: number;
+  questions: IQuestion[];
+  answers: IAnswer[];
+  increment: () => void;
+  decrement: () => void;
+  history: History;
+}
+
+const QuestionButtons = (props: IQuestionButtonsProps) => {
   const {
     activeIndex,
     questions,

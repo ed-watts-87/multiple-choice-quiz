@@ -1,6 +1,13 @@
 import * as React from "react";
+import { IResult } from "../types";
 
-const ReportAnswers = props => {
+interface IReportAnswersProps {
+  getCorrectNumber: () => void;
+  results: IResult[];
+  resetApp: () => void;
+}
+
+const ReportAnswers = (props: IReportAnswersProps) => {
   const { getCorrectNumber, results, resetApp } = props;
   return (
     <>
