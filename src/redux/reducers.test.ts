@@ -1,5 +1,5 @@
 import { questionsReducer, answerReducer } from "./reducers";
-const questions = require("../../mocks/questions.json");
+const questions = require("../mocks/questions.json");
 
 const finalQuestionState = questions;
 

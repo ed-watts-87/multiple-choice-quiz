@@ -1,5 +1,5 @@
-import requestQuestions from "../../mocks/requestQuestions";
-import getAnswers from "../../mocks/getAnswers";
+import requestQuestions from "../mocks/requestQuestions";
+import getAnswers from "../mocks/getAnswers";
 import { IQuestion, IAnswer } from "../typings";
 
 //ACTIONS

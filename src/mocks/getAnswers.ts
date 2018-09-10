@@ -1,5 +1,5 @@
 const answers = require("./answers.json");
-import { IAnswer } from "../src/typings";
+import { IAnswer } from "../typings";
 
 interface IResult {
   question: number;

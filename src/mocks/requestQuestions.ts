@@ -1,5 +1,5 @@
 const questions = require("./questions.json");
-import { IQuestion } from "../src/typings";
+import { IQuestion } from "../typings";
 
 const requestQuestions = () =>
   new Promise<IQuestion[]>((resolve, reject) => {
