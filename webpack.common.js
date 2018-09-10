@@ -13,7 +13,6 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json"]
   },
-  devtool: "source-map",
   module: {
     rules: [
       {
@@ -31,9 +30,6 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       }
     ]
-  },
-  devServer: {
-    historyApiFallback: true
   },
   plugins: [htmlPlugin]
 };
