@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { IError, IQuestion, IAnswer } from "../types";
+import { IError, IQuestion, IAnswer } from "../typings";
 import QuestionButtons from "../QuestionButtons/QuestionButtons";
 import QuestionCard from "../QuestionCard/QuestionCard";
 import Error from "../Error/Error";

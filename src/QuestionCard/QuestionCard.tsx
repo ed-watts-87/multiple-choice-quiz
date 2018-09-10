@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IQuestion, IAnswer, IOptions, IHandleOptionChange } from "../types";
+import { IQuestion, IAnswer, IOptions, IHandleOptionChange } from "../typings";
 
 interface IQuestionCardProps {
   questions: IQuestion[];

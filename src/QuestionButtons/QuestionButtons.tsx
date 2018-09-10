@@ -1,7 +1,7 @@
 import * as React from "react";
 import { withRouter } from "react-router-dom";
 import { History } from "history";
-import { IQuestion, IAnswer } from "../types";
+import { IQuestion, IAnswer } from "../typings";
 
 interface IQuestionButtonsProps {
   activeIndex: number;

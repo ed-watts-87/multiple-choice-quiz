@@ -1,6 +1,6 @@
 import requestQuestions from "../../mocks/requestQuestions";
 import getAnswers from "../../mocks/getAnswers";
-import { IQuestion, IAnswer } from "../types";
+import { IQuestion, IAnswer } from "../typings";
 
 //ACTIONS
 export const RETRIEVE_QUESTIONS = "RETRIEVE_QUESTIONS";

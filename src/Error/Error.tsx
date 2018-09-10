@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { History } from "history";
 import { resetApplication } from "../redux/actions";
-import { IError } from "../types";
+import { IError } from "../typings";
 
 interface IErrorProps {
   resetApplication: () => void;

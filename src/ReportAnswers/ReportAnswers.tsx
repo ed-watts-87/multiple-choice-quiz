@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IResult } from "../types";
+import { IResult } from "../typings";
 
 interface IReportAnswersProps {
   getCorrectNumber: () => void;

@@ -1,7 +1,8 @@
-import questions from "./questions";
+const questions = require("./questions.json");
+import { IQuestion } from "../src/typings";
 
 const requestQuestions = () =>
-  new Promise((resolve, reject) => {
+  new Promise<IQuestion[]>((resolve, reject) => {
     // reject(new Error("Question service not available please try again later"));
     resolve(questions);
   });

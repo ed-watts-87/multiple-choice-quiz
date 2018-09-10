@@ -6,7 +6,7 @@ import {
   ERROR
 } from "./actions";
 import { combineReducers } from "redux";
-import { IQuestion, IAnswer, IResult, IError } from "../types";
+import { IQuestion, IAnswer, IResult, IError } from "../typings";
 
 export const questionsReducer = (
   state: ReadonlyArray<IQuestion> = [],

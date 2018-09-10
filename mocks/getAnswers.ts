@@ -1,6 +1,14 @@
-import answers from "./answers";
+const answers = require("./answers.json");
+import { IAnswer } from "../src/typings";
 
-const sortAnswers = (a, b) => {
+interface IResult {
+  question: number;
+  questionText: string;
+  answerGiven: string;
+  result: string;
+}
+
+const sortAnswers = (a: IResult, b: IResult) => {
   const indexA = a.question;
   const indexB = b.question;
   let comparison = 0;
@@ -12,8 +20,8 @@ const sortAnswers = (a, b) => {
   return comparison;
 };
 
-const getAnswers = givenAnswers =>
-  new Promise((resolve, reject) => {
+const getAnswers = (givenAnswers: IAnswer[]) =>
+  new Promise<IResult[]>((resolve, reject) => {
     // reject(new Error("Answer service not available please try again later"));
     const checkResults = givenAnswers.map(givenAnswer => {
       const indexOfAnswer = givenAnswer.questionIndex;
